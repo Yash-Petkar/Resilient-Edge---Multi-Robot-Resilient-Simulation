@@ -1,0 +1,39 @@
+{
+  "name": "resilientedge",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node ./node_modules/tsx/dist/cli.mjs server.ts",
+    "start": "node ./node_modules/tsx/dist/cli.mjs server.ts",
+    "build": "node ./node_modules/vite/bin/vite.js build",
+    "preview": "node ./node_modules/vite/bin/vite.js preview",
+    "clean": "node -e \"for (const p of ['dist','server.js']) require('node:fs').rmSync(p, { recursive: true, force: true })\"",
+    "lint": "node ./node_modules/typescript/bin/tsc --noEmit",
+    "test:mode": "tsx scripts/test_phase25_mode.ts"
+  },
+  "dependencies": {
+    "@google/genai": "^2.4.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "@vitejs/plugin-react": "^6.1.1",
+    "dotenv": "^17.2.3",
+    "express": "^4.21.2",
+    "lucide-react": "^0.546.0",
+    "motion": "^12.23.24",
+    "react": "^19.0.1",
+    "react-dom": "^19.0.1",
+    "vite": "^8.3.0",
+    "ws": "^8.21.3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/ws": "^8.18.1",
+    "autoprefixer": "^10.4.21",
+    "tailwindcss": "^4.3.3",
+    "tsx": "^4.21.0",
+    "typescript": "^7.0.2"
+  }
+}

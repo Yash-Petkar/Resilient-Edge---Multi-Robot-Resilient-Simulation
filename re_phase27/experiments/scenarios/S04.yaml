@@ -1,0 +1,23 @@
+scenario_id: S04
+version: '1.0'
+name: Crossing conflict
+description: Two robots execute crossing/head-on trajectories.
+world:
+  map_id: warehouse_default
+  profile: crossing
+robot_count: 2
+tasks:
+  count: 2
+  distribution: default
+faults: &id001 []
+timing:
+  time_step: 0.1
+  start_time: 0.0
+seed: 42
+duration: 30
+expected_behavior: Resolve the crossing conflict without collision.
+initial_conditions: {}
+events: []
+fault_schedule: *id001
+network_schedule: []
+task_count: 2

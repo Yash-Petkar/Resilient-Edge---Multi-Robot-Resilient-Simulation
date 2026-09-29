@@ -1,0 +1,372 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  body {
+    background-color: #F4F7FB;
+    color: #0F172A;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+}
+
+/* Custom scrollbar for dense engineering UI */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #EEF2F7;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Public landing page — isolated from authenticated dashboard styles. */
+.re-public { --cyan:#54d7ff; --blue:#3289ff; --purple:#9b7cff; --orange:#ff9b4a; --line:rgba(122,174,205,.16); --muted:#7890a5; font-family:Inter,ui-sans-serif,system-ui,sans-serif; }
+.re-public * { box-sizing:border-box; }
+.re-public a { color:inherit; text-decoration:none; }
+.re-public button { font:inherit; }
+.re-nav { position:fixed; z-index:50; top:0; left:0; right:0; height:76px; padding:0 clamp(18px,4vw,64px); display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid rgba(125,190,230,.10); background:rgba(3,7,11,.66); backdrop-filter:blur(18px); }
+.re-brand { display:flex; align-items:center; gap:11px; min-width:220px; }.re-brand-mark { width:36px;height:36px;display:grid;place-items:center;border:1px solid rgba(84,215,255,.34);background:rgba(84,215,255,.07);color:var(--cyan);box-shadow:0 0 24px rgba(84,215,255,.08); }.re-brand strong{display:block;font-size:12px;letter-spacing:.2em}.re-brand small{display:block;margin-top:3px;color:#5f7588;font:8px/1.2 ui-monospace,monospace;letter-spacing:.15em}.re-nav nav{gap:26px}.re-nav nav a{font:9px ui-monospace,monospace;letter-spacing:.15em;text-transform:uppercase;color:#698093;transition:.2s}.re-nav nav a:hover{color:#dbefff}.re-enter,.re-primary,.re-secondary{display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(84,215,255,.28);padding:10px 15px;cursor:pointer;transition:.25s}.re-enter{background:rgba(84,215,255,.08);color:#ccefff;font:10px ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase}.re-enter:hover,.re-primary:hover{transform:translateY(-2px);box-shadow:0 12px 35px rgba(50,137,255,.18);background:rgba(84,215,255,.14)}
+.re-primary{background:linear-gradient(135deg,rgba(50,137,255,.26),rgba(84,215,255,.08));color:#e9f8ff;font-size:11px;letter-spacing:.08em;text-transform:uppercase}.re-secondary{border-color:var(--line);color:#8ca1b4;background:rgba(255,255,255,.025);font-size:11px}.re-secondary:hover{border-color:rgba(84,215,255,.25);color:#dcebf5}.re-play{font-size:7px;color:var(--cyan);filter:drop-shadow(0 0 5px var(--cyan))}.re-eyebrow{color:#6d8498;font:9px ui-monospace,monospace;letter-spacing:.18em;text-transform:uppercase}.re-eyebrow>span{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan);margin-right:9px}.re-public h1,.re-public h2,.re-public h3{margin:0;font-weight:500;letter-spacing:-.055em}.re-public em{font-style:normal;color:var(--cyan)}
+.re-hero{min-height:100svh;position:relative;display:grid;grid-template-columns:minmax(320px,.82fr) minmax(460px,1.18fr);align-items:center;gap:2vw;padding:130px clamp(22px,6vw,100px) 70px;background:radial-gradient(circle at 74% 46%,rgba(45,102,180,.18),transparent 28%),linear-gradient(180deg,#03070b 0%,#050b11 100%)}.re-hero:before{content:"";position:absolute;inset:76px 0 0;background:linear-gradient(rgba(84,215,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(84,215,255,.035) 1px,transparent 1px);background-size:80px 80px;mask-image:linear-gradient(to bottom,black,transparent 90%);pointer-events:none}.re-hero-copy{position:relative;z-index:2;max-width:650px}.re-hero h1{font-size:clamp(72px,10vw,155px);line-height:.78;margin-top:26px;text-shadow:0 0 50px rgba(84,215,255,.05)}.re-kicker{font-size:clamp(22px,2.5vw,38px);line-height:1.05;margin:35px 0 0;color:#dce7f0;letter-spacing:-.04em}.re-lede{margin-top:18px;color:#71869a;font:12px ui-monospace,monospace;letter-spacing:.15em}.re-actions{display:flex;gap:10px;margin-top:34px;flex-wrap:wrap}.re-hero-meta{display:flex;gap:18px;flex-wrap:wrap;margin-top:50px;color:#536a7c;font:8px ui-monospace,monospace;letter-spacing:.12em}.re-hero-meta span:before{content:'// ';color:#2c6079}
+.re-fleet{position:relative;height:620px;overflow:hidden;border:1px solid rgba(111,171,208,.16);background:radial-gradient(circle at 50% 50%,rgba(22,65,102,.20),transparent 46%),rgba(3,9,14,.72);box-shadow:inset 0 0 80px rgba(0,0,0,.45),0 30px 90px rgba(0,0,0,.24)}.re-fleet.cinematic{height:calc(100svh - 130px);min-height:520px}.re-fleet.compact{height:480px}.re-fleet-grid{position:absolute;inset:0;background:linear-gradient(rgba(84,215,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(84,215,255,.035) 1px,transparent 1px);background-size:42px 42px;transform:perspective(900px) rotateX(54deg) scale(1.35);transform-origin:center bottom;opacity:.8}.re-routes{position:absolute;inset:8%;width:84%;height:84%;overflow:visible}.gridline{stroke:rgba(93,145,177,.13);stroke-width:.2;stroke-dasharray:1 3}.route{fill:none;stroke-width:.7;stroke-linecap:round;filter:drop-shadow(0 0 6px currentColor)}.route-main{stroke:#54d7ff;color:#54d7ff;stroke-dasharray:1 2;animation:dash 7s linear infinite}.route-alt{stroke:#9b7cff;color:#9b7cff;opacity:.65;stroke-dasharray:2 3;animation:dash 10s linear reverse infinite}.route-conflict{stroke:#ff9b4a;color:#ff9b4a;opacity:0;transition:.4s}.route-conflict.show{opacity:1;animation:blink 1s infinite}.re-edge-node{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:grid;place-items:center;z-index:4}.re-edge-node span{width:68px;height:68px;border:1px solid rgba(84,215,255,.5);border-radius:50%;display:grid;place-items:center;color:var(--cyan);background:rgba(4,19,28,.86);box-shadow:0 0 0 10px rgba(84,215,255,.025),0 0 35px rgba(84,215,255,.12);animation:edgePulse 3s ease-in-out infinite}.re-edge-node.active span{box-shadow:0 0 0 16px rgba(84,215,255,.04),0 0 50px rgba(84,215,255,.25)}.re-edge-node small{margin-top:8px;color:#7690a2;font:7px ui-monospace,monospace;letter-spacing:.16em}.re-robot{position:absolute;z-index:5;transform:translate(-50%,-50%);transition:left .7s cubic-bezier(.2,.8,.2,1),top .7s cubic-bezier(.2,.8,.2,1);animation:robotFloat 3.6s ease-in-out var(--delay) infinite}.re-robot-body{width:42px;height:42px;display:grid;place-items:center;border:1px solid rgba(84,215,255,.48);background:linear-gradient(135deg,rgba(12,34,49,.96),rgba(5,12,18,.96));color:#9eeaff;box-shadow:0 0 22px rgba(84,215,255,.10)}.re-robot>span{display:block;margin-top:5px;color:#b2c8d8;font:8px ui-monospace,monospace;letter-spacing:.08em;text-align:center}.re-robot>small{display:block;color:#4f758c;font:7px ui-monospace,monospace;text-align:center;margin-top:2px}.re-robot.offline .re-robot-body{border-color:rgba(255,155,74,.7);color:#ffad69;filter:grayscale(.5);animation:offline 1.2s infinite}.re-robot.scatter{transform:translate(calc(-50% + (var(--i) * 9px - 12px)),calc(-50% + (var(--i) * -10px + 12px)));}.re-hud{position:absolute;z-index:6;border:1px solid rgba(117,172,202,.16);background:rgba(3,10,15,.72);padding:9px 11px;min-width:110px}.re-hud span{display:block;color:#4f697d;font:7px ui-monospace,monospace;letter-spacing:.15em}.re-hud strong{display:block;margin-top:4px;color:#b9d3e3;font:9px ui-monospace,monospace;letter-spacing:.08em}.hud-a{left:18px;top:18px}.hud-b{right:18px;top:18px}.re-corner{position:absolute;bottom:16px;left:18px;color:#476174;font:7px/1.7 ui-monospace,monospace;letter-spacing:.1em}
+@keyframes dash{to{stroke-dashoffset:-30}}@keyframes blink{50%{opacity:.2}}@keyframes edgePulse{50%{transform:scale(1.06)}}@keyframes robotFloat{50%{margin-top:-5px}}@keyframes offline{50%{opacity:.45}}
+.re-section{padding:150px clamp(22px,9vw,150px);position:relative;background:#04090e}.re-section-head{display:flex;gap:30px;align-items:flex-start;margin-bottom:70px}.re-index{color:#355468;font:10px ui-monospace,monospace;padding-top:8px}.re-section h2{font-size:clamp(48px,6vw,92px);line-height:.9}.re-system{background:linear-gradient(180deg,#04090e,#061019)}.re-system-grid,.re-ros-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:8vw;align-items:center}.re-prose{color:#8499aa;line-height:1.9;font-size:15px;max-width:590px}.re-prose p{margin:0 0 22px}.re-prose .muted{color:#586d7e}.re-chip-grid{display:flex;gap:7px;flex-wrap:wrap;margin-top:32px}.re-chip-grid span{padding:7px 9px;border:1px solid rgba(84,215,255,.13);color:#6e8799;background:rgba(84,215,255,.025);font:7px ui-monospace,monospace;letter-spacing:.1em}.re-network{height:380px;position:relative;border:1px solid rgba(111,171,208,.14);background:radial-gradient(circle,rgba(48,121,172,.11),transparent 48%);overflow:hidden}.re-network svg{position:absolute;inset:0;width:100%;height:100%}.re-network svg path,.re-network svg circle{fill:none;stroke:rgba(84,215,255,.28);stroke-width:1}.re-network-core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:140px;height:140px;border-radius:50%;border:1px solid rgba(84,215,255,.42);background:#07141e;display:grid;place-items:center;align-content:center;z-index:2;color:var(--cyan);box-shadow:0 0 50px rgba(84,215,255,.10)}.re-network-core span{text-align:center;font:8px/1.5 ui-monospace,monospace;letter-spacing:.12em}.re-network-robot{position:absolute;z-index:3;display:flex;align-items:center;gap:7px;color:#92b0c2;font:8px ui-monospace,monospace}.re-network-robot svg{position:static;width:auto;height:auto;color:#62d9ff}.n0{left:10%;top:17%}.n1{right:10%;top:17%}.n2{left:10%;bottom:17%}.n3{right:10%;bottom:17%}
+.re-feature-section{background:#050b11}.re-stage-layout{display:grid;grid-template-columns:.65fr 1.35fr;gap:6vw;align-items:center}.re-stage-copy h3{font-size:clamp(34px,4vw,62px);line-height:.98;margin-top:18px}.re-stage-copy p{color:#71879a;line-height:1.8;max-width:470px;margin-top:22px}.re-progress{height:1px;background:#152633;margin-top:40px}.re-progress span{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--purple));transition:.5s}.re-stage-dots{display:flex;gap:7px;margin-top:20px}.re-stage-dots button{width:25px;height:2px;border:0;background:#1c2d39;padding:0;cursor:pointer}.re-stage-dots button.active{background:var(--cyan);box-shadow:0 0 8px rgba(84,215,255,.5)}.re-mini-fleet{border:1px solid var(--line);box-shadow:0 30px 90px rgba(0,0,0,.2)}
+.re-story{height:520vh;position:relative;background:#02070b}.re-story-sticky{height:100svh;position:sticky;top:0;display:grid;grid-template-columns:.7fr 1.3fr;align-items:center;gap:5vw;padding:100px clamp(22px,7vw,110px);overflow:hidden}.re-story-copy{z-index:5}.re-story-copy h2{font-size:clamp(46px,5.5vw,84px);line-height:.9;margin-top:20px}.re-story-copy p{color:#6e8394;max-width:450px;line-height:1.8;margin-top:24px}.re-story-status{display:inline-flex;align-items:center;gap:9px;margin-top:30px;color:#668095;font:8px ui-monospace,monospace;letter-spacing:.1em}.pulse{width:6px;height:6px;border-radius:50%;background:#65e7aa;box-shadow:0 0 12px #65e7aa}
+.re-architecture{background:linear-gradient(180deg,#04090e,#071018)}.re-arch-flow{display:flex;flex-direction:column;align-items:center;max-width:700px;margin:0 auto}.re-arch-node{width:min(100%,520px);padding:16px 20px;border:1px solid rgba(111,171,208,.16);background:rgba(8,18,26,.75);color:#9cb4c4;font:9px ui-monospace,monospace;letter-spacing:.11em}.re-arch-node span{color:#38576b;margin-right:16px}.re-arch-node.future{border-color:rgba(155,124,255,.25);color:#b9a8ff;background:rgba(74,51,124,.08)}.re-arch-arrow{color:#39596d;margin:7px}.re-arch-note{display:flex;align-items:center;justify-content:center;gap:10px;color:#62798b;margin-top:35px;font:9px ui-monospace,monospace}.re-db-icon{width:18px;height:14px;border:1px solid #55748a;border-radius:50%;position:relative}.re-db-icon:after{content:"";position:absolute;left:-1px;right:-1px;bottom:-4px;height:8px;border:1px solid #55748a;border-top:0;border-radius:0 0 50% 50%}
+.re-recovery{background:#050a0f}.re-recovery-flow{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}.re-recovery-node{min-height:130px;border:1px solid rgba(111,171,208,.14);background:rgba(7,15,22,.65);padding:16px;color:#9bb0c0;font:8px ui-monospace,monospace;letter-spacing:.09em;display:flex;flex-direction:column;justify-content:space-between}.re-recovery-node span{color:#3d5b6e}.re-recovery-node:last-child{border-color:rgba(84,215,255,.35);color:#bcefff;box-shadow:inset 0 0 40px rgba(84,215,255,.035)}
+.re-ros{overflow:hidden;background:#03080d}.re-ros-glow{position:absolute;width:600px;height:600px;border-radius:50%;right:-200px;top:-100px;background:radial-gradient(circle,rgba(84,215,255,.10),transparent 65%);pointer-events:none}.re-viewport{height:390px;border:1px solid rgba(84,215,255,.15);position:relative;overflow:hidden;background:#040a0f}.re-viewport-label{position:absolute;left:18px;top:18px;color:#4d687b;font:8px ui-monospace,monospace;letter-spacing:.12em;z-index:3}.re-warehouse-lines{position:absolute;inset:0;background:linear-gradient(90deg,transparent 10%,rgba(84,215,255,.08) 10.1%,transparent 10.2%,transparent 30%,rgba(84,215,255,.08) 30.1%,transparent 30.2%,transparent 55%,rgba(84,215,255,.08) 55.1%,transparent 55.2%,transparent 78%,rgba(84,215,255,.08) 78.1%,transparent 78.2%),linear-gradient(rgba(84,215,255,.07) 1px,transparent 1px);background-size:auto,100% 55px;transform:perspective(600px) rotateX(50deg) scale(1.4);transform-origin:center bottom}.re-ros-stack{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:10px;color:#a6bfd0;font:9px ui-monospace,monospace;letter-spacing:.12em}.re-ros-stack span:nth-child(odd){padding:13px 20px;border:1px solid rgba(84,215,255,.24);background:rgba(4,15,22,.86);box-shadow:0 0 25px rgba(84,215,255,.06)}
+.re-sih{padding-top:100px;padding-bottom:150px;background:radial-gradient(circle at 50% 50%,rgba(48,107,163,.13),transparent 48%),#03070b}.re-sih-card{max-width:1000px;margin:auto;border:1px solid rgba(111,171,208,.17);padding:clamp(28px,6vw,80px);background:linear-gradient(135deg,rgba(10,25,36,.86),rgba(4,10,15,.8));position:relative;overflow:hidden}.re-sih-card:after{content:"26123";position:absolute;right:-15px;bottom:-45px;font-size:180px;color:rgba(84,215,255,.025);font-weight:800;letter-spacing:-.1em}.re-sih-id{font:11px ui-monospace,monospace;color:var(--cyan);margin-top:18px}.re-sih h2{font-size:clamp(48px,6vw,88px);line-height:.9;margin-top:18px;position:relative;z-index:2}.re-sih p{max-width:650px;color:#758b9c;line-height:1.8;margin:28px 0;position:relative;z-index:2}.re-footer{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;padding:24px clamp(22px,6vw,100px);border-top:1px solid rgba(111,171,208,.10);background:#020509;color:#40596b;font:8px ui-monospace,monospace;letter-spacing:.12em}
+.re-noise{position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E")}
+@media(max-width:1000px){.re-hero{grid-template-columns:1fr;padding-top:120px}.re-fleet{height:520px}.re-system-grid,.re-ros-grid,.re-stage-layout,.re-story-sticky{grid-template-columns:1fr}.re-story{height:650vh}.re-story-sticky{padding-top:95px}.re-story-copy{position:absolute;top:95px;left:22px;right:22px;pointer-events:none}.re-story-copy p{display:none}.re-story-sticky .re-fleet{height:70vh;margin-top:150px}.re-recovery-flow{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:640px){.re-nav{height:64px}.re-brand small{display:none}.re-nav nav{display:none}.re-enter{padding:9px 11px;font-size:8px}.re-hero{padding:100px 16px 35px}.re-hero h1{font-size:72px}.re-kicker{font-size:25px}.re-hero-meta{gap:9px;margin-top:30px}.re-fleet{height:410px}.re-section{padding:90px 18px}.re-section-head{gap:15px;margin-bottom:42px}.re-section h2{font-size:47px}.re-network{height:310px}.re-stage-layout{gap:35px}.re-mini-fleet{height:380px}.re-fleet.compact{height:380px}.re-fleet.cinematic{height:62vh;min-height:430px}.re-recovery-flow{grid-template-columns:1fr 1fr}.re-recovery-node{min-height:105px}.re-footer{flex-direction:column}.re-sih h2{font-size:50px}.re-ros-grid{gap:35px}.re-viewport{height:300px}}
+@media(prefers-reduced-motion:reduce){.re-public *,.re-public *:before,.re-public *:after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.001ms!important}.re-robot{animation:none}.route{animation:none}}
+
+/* --------------------------------------------------------------------------
+   ResilientEdge Dashboard Refresh
+   Visual-only layer: keeps component structure, state, handlers and APIs intact.
+   -------------------------------------------------------------------------- */
+.re-dashboard-active {
+  --dash-bg: #f4f7fb;
+  --dash-surface: #ffffff;
+  --dash-surface-soft: #f8fafc;
+  --dash-border: #e2e8f0;
+  --dash-border-strong: #cbd5e1;
+  --dash-text: #0f172a;
+  --dash-muted: #64748b;
+  --dash-subtle: #94a3b8;
+  --dash-blue: #2563eb;
+  --dash-blue-soft: #eff6ff;
+  --dash-green: #16a34a;
+  --dash-orange: #f59e0b;
+  --dash-red: #ef4444;
+  background: var(--dash-bg) !important;
+  color: var(--dash-text) !important;
+}
+
+/* Header */
+.re-dashboard-active > header {
+  background: rgba(255,255,255,.94) !important;
+  border-bottom-color: var(--dash-border) !important;
+  box-shadow: 0 1px 8px rgba(15,23,42,.05);
+  color: var(--dash-text) !important;
+}
+.re-dashboard-active > header [class*="bg-[#151A21]"] {
+  background: var(--dash-surface-soft) !important;
+}
+.re-dashboard-active > header [class*="border-[#29323D]"] {
+  border-color: var(--dash-border) !important;
+}
+.re-dashboard-active > header [class*="text-[#E5E7EB]"] { color: var(--dash-text) !important; }
+.re-dashboard-active > header [class*="text-[#9CA3AF]"] { color: var(--dash-muted) !important; }
+.re-dashboard-active > header [class*="text-[#6B7280]"] { color: var(--dash-subtle) !important; }
+
+/* Sidebar */
+.re-dashboard-active aside {
+  background: #ffffff !important;
+  border-right-color: var(--dash-border) !important;
+  box-shadow: 1px 0 10px rgba(15,23,42,.035);
+}
+.re-dashboard-active aside [class*="text-[#E5E7EB]"] { color: var(--dash-text) !important; }
+.re-dashboard-active aside [class*="text-[#9CA3AF]"] { color: var(--dash-muted) !important; }
+.re-dashboard-active aside [class*="text-[#6B7280]"] { color: var(--dash-subtle) !important; }
+.re-dashboard-active aside [class*="border-[#29323D]"] { border-color: var(--dash-border) !important; }
+.re-dashboard-active aside button:not([class*="bg-[#1683E8]"]):hover {
+  background: #f1f5f9 !important;
+  color: var(--dash-text) !important;
+}
+.re-dashboard-active aside button[class*="bg-[#1683E8]"] {
+  background: var(--dash-blue) !important;
+  box-shadow: 0 5px 14px rgba(37,99,235,.18);
+}
+
+/* Main canvas */
+.re-dashboard-active main {
+  background: var(--dash-bg) !important;
+}
+.re-dashboard-active .re-dashboard-page {
+  padding-bottom: 22px;
+}
+
+/* Generic card surfaces used by the existing dashboard components. */
+.re-dashboard-active .re-dashboard-page [class*="bg-[#151A21]"],
+.re-dashboard-active .re-dashboard-page [class*="bg-[#0B1016]"],
+.re-dashboard-active .re-dashboard-page [class*="bg-[#0F1115]"] {
+  background: var(--dash-surface) !important;
+}
+.re-dashboard-active .re-dashboard-page [class*="border-[#29323D]"] {
+  border-color: var(--dash-border) !important;
+}
+.re-dashboard-active .re-dashboard-page [class*="text-[#E5E7EB]"] {
+  color: var(--dash-text) !important;
+}
+.re-dashboard-active .re-dashboard-page [class*="text-[#9CA3AF]"] {
+  color: var(--dash-muted) !important;
+}
+.re-dashboard-active .re-dashboard-page [class*="text-[#6B7280]"] {
+  color: var(--dash-subtle) !important;
+}
+
+/* Lift dashboard panels without touching their DOM or behaviour. */
+.re-dashboard-active .re-dashboard-page > div > div,
+.re-dashboard-active .re-dashboard-page > div > div > div {
+  border-radius: 14px;
+}
+.re-dashboard-active .re-dashboard-page [class*="rounded-xl"],
+.re-dashboard-active .re-dashboard-page [class*="rounded-lg"] {
+  border-radius: 14px;
+}
+.re-dashboard-active .re-dashboard-page [class*="shadow"] {
+  box-shadow: 0 8px 24px rgba(15,23,42,.055) !important;
+}
+
+/* Make primary blue controls slightly cleaner in the refreshed theme. */
+.re-dashboard-active .re-dashboard-page [class*="bg-[#1683E8]"] {
+  background: var(--dash-blue) !important;
+}
+.re-dashboard-active .re-dashboard-page [class*="border-[#1683E8]"] {
+  border-color: rgba(37,99,235,.30) !important;
+}
+.re-dashboard-active .re-dashboard-page [class*="text-[#1683E8]"] {
+  color: var(--dash-blue) !important;
+}
+
+/* Status colors remain semantic; only soften their backgrounds for the light UI. */
+.re-dashboard-active .re-dashboard-page [class*="bg-[#22C55E]/"] { background-color: rgba(22,163,74,.10) !important; }
+.re-dashboard-active .re-dashboard-page [class*="bg-[#F59E0B]/"] { background-color: rgba(245,158,11,.11) !important; }
+.re-dashboard-active .re-dashboard-page [class*="bg-[#EF4444]/"] { background-color: rgba(239,68,68,.10) !important; }
+.re-dashboard-active .re-dashboard-page [class*="bg-[#6B7280]/"] { background-color: rgba(100,116,139,.10) !important; }
+
+/* Dashboard scrollbar */
+.re-dashboard-active ::-webkit-scrollbar-track { background: #eef2f7; }
+.re-dashboard-active ::-webkit-scrollbar-thumb { background: #cbd5e1; }
+.re-dashboard-active ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+@media (max-width: 900px) {
+  .re-dashboard-active aside { width: 190px !important; }
+}
+
+
+/* --------------------------------------------------------------------------
+   Global Light Application Theme
+   The application is intentionally light-only. These scoped overrides convert
+   legacy dark utility classes without changing component logic or APIs.
+   -------------------------------------------------------------------------- */
+.re-dashboard-active {
+  background: #F4F7FB !important;
+  color: #0F172A !important;
+}
+.re-dashboard-active [class*="bg-[#0F1115]"],
+.re-dashboard-active [class*="bg-[#0F1318]"],
+.re-dashboard-active [class*="bg-[#0B1016]"],
+.re-dashboard-active [class*="bg-[#151A21]"],
+.re-dashboard-active [class*="bg-[#1B222B]"],
+.re-dashboard-active [class*="bg-[#222B36]"] {
+  background-color: #FFFFFF !important;
+}
+.re-dashboard-active [class*="border-[#29323D]"] {
+  border-color: #E2E8F0 !important;
+}
+.re-dashboard-active [class*="text-[#E5E7EB]"] {
+  color: #0F172A !important;
+}
+.re-dashboard-active [class*="text-[#9CA3AF]"] {
+  color: #64748B !important;
+}
+.re-dashboard-active [class*="text-[#6B7280]"] {
+  color: #64748B !important;
+}
+.re-dashboard-active [class*="hover:bg-[#1B222B]"]:hover,
+.re-dashboard-active [class*="hover:bg-[#222B36]"]:hover {
+  background-color: #F1F5F9 !important;
+}
+.re-dashboard-active [class*="bg-[#151A21]/"],
+.re-dashboard-active [class*="bg-[#0F1115]/"],
+.re-dashboard-active [class*="bg-[#0F1318]/"] {
+  background-color: rgba(255,255,255,.96) !important;
+}
+.re-dashboard-active .re-dashboard-page,
+.re-dashboard-active .re-dashboard-workspace,
+.re-dashboard-active main {
+  background: #F4F7FB !important;
+}
+.re-dashboard-active input,
+.re-dashboard-active select,
+.re-dashboard-active textarea {
+  background-color: #FFFFFF !important;
+  color: #0F172A !important;
+  border-color: #CBD5E1 !important;
+}
+.re-dashboard-active option {
+  background: #FFFFFF !important;
+  color: #0F172A !important;
+}
+.re-dashboard-active .landing-page,
+.re-dashboard-active .access-page { color-scheme: light; }
+
+/* The landing page is light end-to-end, including its footer. */
+.landing-footer { background: #FFFFFF !important; color: #475569 !important; border-top: 1px solid #E2E8F0; }
+.landing-footer .footer-brand,
+.landing-footer-grid > div:not(:first-child) > b { color: #0F172A !important; }
+.landing-footer p,
+.landing-footer-grid > div:not(:first-child) > a { color: #64748B !important; }
+.landing-footer-grid > div:not(:first-child) > a:hover { color: #2563EB !important; }
+.landing-footer-social a { border-color: #E2E8F0 !important; color: #64748B !important; }
+.landing-footer-social a:hover { border-color: #CBD5E1 !important; color: #2563EB !important; }
+.landing-footer-subscribe { border-color: #E2E8F0 !important; }
+.landing-footer-subscribe input { background: #F8FAFC !important; color: #0F172A !important; }
+.landing-footer-bottom { border-top-color: #E2E8F0 !important; color: #94A3B8 !important; }
+
+
+/* --------------------------------------------------------------------------
+   Precision UI refinement
+   Visual-only: typography, icon consistency, badge contrast and control
+   polish. No layout, routing, feature, state or API behaviour is changed.
+   -------------------------------------------------------------------------- */
+.re-dashboard-active {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-synthesis: none;
+}
+
+.re-dashboard-active,
+.re-dashboard-active button,
+.re-dashboard-active input,
+.re-dashboard-active select,
+.re-dashboard-active textarea {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.re-dashboard-active .font-mono,
+.re-dashboard-active code,
+.re-dashboard-active pre {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.re-dashboard-active svg {
+  stroke-width: 1.8;
+}
+
+.re-dashboard-active button {
+  line-height: 1.2;
+}
+
+.re-dashboard-active input,
+.re-dashboard-active select,
+.re-dashboard-active textarea {
+  line-height: 1.35;
+}
+
+/* Primary status/text badges use a light tint rather than a solid blue fill.
+   This fixes the old dark-theme utility selectors also matching /15 opacity
+   variants and making their labels visually disappear. */
+.re-dashboard-active [class*="bg-[#1683E8]/"] {
+  background-color: #eff6ff !important;
+}
+.re-dashboard-active [class*="text-[#1683E8]"] {
+  color: #2563eb !important;
+}
+.re-dashboard-active [class*="border-[#1683E8]/"] {
+  border-color: #bfdbfe !important;
+}
+
+/* Semantic status badges: consistent light surfaces with readable text. */
+.re-dashboard-active [class*="bg-[#22C55E]/"] {
+  background-color: #f0fdf4 !important;
+}
+.re-dashboard-active [class*="text-[#22C55E]"] {
+  color: #16a34a !important;
+}
+.re-dashboard-active [class*="border-[#22C55E]/"] {
+  border-color: #bbf7d0 !important;
+}
+
+.re-dashboard-active [class*="bg-[#F59E0B]/"] {
+  background-color: #fffbeb !important;
+}
+.re-dashboard-active [class*="text-[#F59E0B]"] {
+  color: #d97706 !important;
+}
+.re-dashboard-active [class*="border-[#F59E0B]/"] {
+  border-color: #fde68a !important;
+}
+
+.re-dashboard-active [class*="bg-[#EF4444]/"] {
+  background-color: #fef2f2 !important;
+}
+.re-dashboard-active [class*="text-[#EF4444]"] {
+  color: #dc2626 !important;
+}
+.re-dashboard-active [class*="border-[#EF4444]/"] {
+  border-color: #fecaca !important;
+}
+
+.re-dashboard-active [class*="bg-[#8B5CF6]/"] {
+  background-color: #f5f3ff !important;
+}
+.re-dashboard-active [class*="text-[#8B5CF6]"] {
+  color: #7c3aed !important;
+}
+.re-dashboard-active [class*="border-[#8B5CF6]/"] {
+  border-color: #ddd6fe !important;
+}
+
+/* Card headers and dense table labels read more cleanly at the same existing size. */
+.re-dashboard-active th {
+  letter-spacing: .045em;
+}
+.re-dashboard-active td,
+.re-dashboard-active th {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Preserve clear focus states without altering component structure. */
+.re-dashboard-active button:focus-visible,
+.re-dashboard-active input:focus-visible,
+.re-dashboard-active select:focus-visible,
+.re-dashboard-active textarea:focus-visible {
+  outline: 2px solid rgba(37, 99, 235, .28);
+  outline-offset: 2px;
+}
+
+/* Light, restrained hover treatment for dashboard surfaces. */
+.re-dashboard-active [class*="hover:bg-[#151A21]"]:hover,
+.re-dashboard-active [class*="hover:bg-[#1B222B]"]:hover,
+.re-dashboard-active [class*="hover:bg-[#222B36]"]:hover {
+  background-color: #f8fafc !important;
+}

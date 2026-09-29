@@ -1,0 +1,28 @@
+scenario_id: S06
+version: '1.0'
+name: Robot failure
+description: R2 fails during active operation and its task is recovered.
+world:
+  map_id: warehouse_default
+  profile: normal
+robot_count: 3
+tasks:
+  count: 6
+  distribution: default
+faults: &id001
+- type: ROBOT_FAILURE
+  target: R2
+  start_time: 4.0
+  duration: 60.0
+  parameters: {}
+timing:
+  time_step: 0.1
+  start_time: 0.0
+seed: 42
+duration: 50
+expected_behavior: Detect R2 failure and recover its unfinished work.
+initial_conditions: {}
+events: []
+fault_schedule: *id001
+network_schedule: []
+task_count: 6

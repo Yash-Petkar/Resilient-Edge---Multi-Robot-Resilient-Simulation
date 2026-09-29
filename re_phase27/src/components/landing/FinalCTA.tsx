@@ -1,0 +1,3 @@
+import React from 'react';
+import { ArrowRight } from 'lucide-react';
+export const FinalCTA=()=>{const goAccess=()=>{window.history.pushState({},'', '/access');window.dispatchEvent(new PopStateEvent('popstate'));};return <section className="landing-final-cta"><div className="landing-container"><div><span className="landing-pill">READY TO EXPLORE?</span><h2>Launch the ResilientEdge control environment.</h2><p>Access the existing application without changing its backend, simulation, telemetry, or resilience capabilities.</p><button className="landing-btn landing-btn-primary landing-btn-large" onClick={goAccess}>Open Application <ArrowRight size={16}/></button></div></div></section>};

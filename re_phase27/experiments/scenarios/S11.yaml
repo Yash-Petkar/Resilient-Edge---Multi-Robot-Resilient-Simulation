@@ -1,0 +1,31 @@
+scenario_id: S11
+version: '1.0'
+name: Dynamic obstacle
+description: A dynamic obstacle appears on an active route.
+world:
+  map_id: warehouse_default
+  profile: normal
+robot_count: 3
+tasks:
+  count: 6
+  distribution: default
+faults: &id001
+- type: DYNAMIC_OBSTACLE
+  target: pos:10,8
+  start_time: 2.5
+  duration: 20.0
+  parameters:
+    position:
+    - 10
+    - 8
+timing:
+  time_step: 0.1
+  start_time: 0.0
+seed: 42
+duration: 40
+expected_behavior: Detect the obstacle and replan around it.
+initial_conditions: {}
+events: []
+fault_schedule: *id001
+network_schedule: []
+task_count: 6

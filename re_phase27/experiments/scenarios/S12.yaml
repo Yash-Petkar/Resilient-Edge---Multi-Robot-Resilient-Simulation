@@ -1,0 +1,44 @@
+scenario_id: S12
+version: '1.0'
+name: Combined faults
+description: Robot failure, blocked aisle and packet loss occur together.
+world:
+  map_id: warehouse_default
+  profile: normal
+robot_count: 3
+tasks:
+  count: 6
+  distribution: default
+faults: &id001
+- type: ROBOT_FAILURE
+  target: R2
+  start_time: 4.0
+  duration: 40.0
+  parameters: {}
+- type: BLOCKED_AISLE
+  target: aisle_central
+  start_time: 2.0
+  duration: 25.0
+  parameters:
+    cells:
+    - - 8
+      - 4
+    - - 8
+      - 5
+- type: PACKET_LOSS
+  target: network
+  start_time: 3.0
+  duration: 20.0
+  parameters:
+    rate: 0.3
+timing:
+  time_step: 0.1
+  start_time: 0.0
+seed: 42
+duration: 60
+expected_behavior: Continue safely while applying fault detection and recovery mechanisms.
+initial_conditions: {}
+events: []
+fault_schedule: *id001
+network_schedule: []
+task_count: 6
