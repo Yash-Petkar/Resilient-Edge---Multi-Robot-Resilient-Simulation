@@ -1,0 +1,13 @@
+name: baseline
+version: "1.0"
+configuration_version: "1.0"
+configuration:
+  coordination_mode: stop_and_wait
+  resilience_enabled: false
+  dynamic_reassignment: false
+  deadlock_recovery: false
+  network_resync: false
+planner_configuration:
+  allow_diagonal: false
+recovery_configuration:
+  enabled: false

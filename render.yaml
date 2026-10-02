@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: resilientedge-backend
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn backend.api.fastapi_app:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: DATABASE_PATH
+        value: /data/resilientedge.db
+      - key: DEMO_MODE
+        value: "true"
+      - key: CORS_ORIGINS
+        value: "https://resilient-edge-multi-robot-resilien.vercel.app"
+      - key: JWT_SECRET
+        sync: false
+    disk:
+      name: resilientedge-data
+      mountPath: /data
+      sizeGB: 1

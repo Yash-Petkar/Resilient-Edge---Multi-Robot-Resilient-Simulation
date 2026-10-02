@@ -1,0 +1,23 @@
+scenario_id: S02
+version: '1.0'
+name: Normal / 10 robots
+description: Normal scalability run with 10 robots.
+world:
+  map_id: warehouse_default
+  profile: normal
+robot_count: 10
+tasks:
+  count: 15
+  distribution: default
+faults: &id001 []
+timing:
+  time_step: 0.1
+  start_time: 0.0
+seed: 42
+duration: 60
+expected_behavior: Execute tasks under normal operating conditions with 10 robots.
+initial_conditions: {}
+events: []
+fault_schedule: *id001
+network_schedule: []
+task_count: 15

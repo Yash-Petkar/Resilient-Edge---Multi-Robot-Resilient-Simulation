@@ -1,0 +1,3 @@
+@echo off
+echo Starting ResilientEdge Web UI Dashboard on Windows...
+npm run dev

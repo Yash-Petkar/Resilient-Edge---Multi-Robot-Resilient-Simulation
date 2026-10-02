@@ -1,0 +1,13 @@
+name: resilient
+version: "1.0"
+configuration_version: "1.0"
+configuration:
+  coordination_mode: resilient
+  resilience_enabled: true
+  dynamic_reassignment: true
+  deadlock_recovery: true
+  network_resync: true
+planner_configuration:
+  allow_diagonal: false
+recovery_configuration:
+  enabled: true

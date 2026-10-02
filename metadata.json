@@ -1,0 +1,6 @@
+{
+  "name": "ResilientEdge - Multi-Robot Resilience Simulation & Telemetry Platform",
+  "description": "Multi-robot resilience simulation and experimentation platform with real-time web telemetry, fault injection, dynamic coordination, and analytical reporting.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

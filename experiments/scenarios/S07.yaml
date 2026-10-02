@@ -1,0 +1,29 @@
+scenario_id: S07
+version: '1.0'
+name: Low battery
+description: R1 experiences a low-battery event.
+world:
+  map_id: warehouse_default
+  profile: normal
+robot_count: 3
+tasks:
+  count: 6
+  distribution: default
+faults: &id001
+- type: LOW_BATTERY
+  target: R1
+  start_time: 2.0
+  duration: 30.0
+  parameters: {}
+timing:
+  time_step: 0.1
+  start_time: 0.0
+seed: 42
+duration: 45
+expected_behavior: Enter appropriate degraded behavior and handle the low-battery
+  condition.
+initial_conditions: {}
+events: []
+fault_schedule: *id001
+network_schedule: []
+task_count: 6
